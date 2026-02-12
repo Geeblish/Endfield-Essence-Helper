@@ -18,7 +18,7 @@ OR
 
 OR
 
-https://github.com/Geeblish/Endfield-Essence-Helper/releases/tag/Final-Releases for an executable
+[https://github.com/Geeblish/Endfield-Essence-Helper/releases/tag/0.1.1_Release](https://github.com/Geeblish/Endfield-Essence-Helper/releases/tag/0.1.1_Release) for an executable
 
 Then run the executable or if you downloaded the repo open your shell and run:
 `./main.py`
@@ -34,6 +34,28 @@ or open
 `
 python -m pip install -r requirements.txt
 `
+
+# Configs
+## To mess with different configs, go in [main.py](https://github.com/Geeblish/Endfield-Essence-Helper/blob/main/main.py) or [lookup_driver.py](https://github.com/Geeblish/Endfield-Essence-Helper/blob/main/lookup_driver.py) and change them in file. 
+```
+WEAPON_JSON = Path("data") / "weapons.json"
+HOTKEY = "f10"  # user-changeable toggle
+LOG_DEBUG = False  # verbose logging toggle
+SAVE_IMAGES = False  # set True when you need dumps in data/tmp/ocr_debug
+GUARD_MODE = GuardMode.IMAGE  # IMAGE | OCR | NONE
+USE_STAT_CACHE = True        # use cache lookups
+CREATE_STAT_CACHE = False     # if True, save matched stat images to data/matched
+USE_QUALITY_GUARD = False     # set False to skip gold pixel check (e.g., to see lower rarity)
+REQUIRE_THREE_STATS = True    # require all 3 stats before lookup
+```
+> [!caution]
+> ## THERE WILL NOT BE (at least my release) A CONFIG FILE FOR THE EXECUTABLE VERSION.
+> ## I AM TOO LAZY TO MAKE A CONFIG FILE. ALSO I AM TOO LAZY TO FIX SOMETHING IF THE USER BREAKS IT
+> <sub>That being said, I know the executable is buggy so I wont be helping with that either 🫣 </sub>
+
+> [!note]
+> The executable is shipped with image matching, using ./data/matches as the lookup
+
 ---
 # Compiling
 Yeah idk i just used pyinstaller
@@ -64,6 +86,7 @@ pythom -m PyInstaller main.py `
 Emojis for AI filtering
 
 🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫣🫃🫃🫃🫃🫃🫃
+
 
 
 
