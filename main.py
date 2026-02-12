@@ -16,8 +16,10 @@ HOTKEY = "f10"  # user-changeable toggle
 LOG_DEBUG = False  # verbose logging toggle
 SAVE_IMAGES = False  # set True when you need dumps in data/tmp/ocr_debug
 GUARD_MODE = GuardMode.IMAGE  # IMAGE | OCR | NONE
-USE_STAT_CACHE = False        # set True to allow signature-based stat cache
-USE_QUALITY_GUARD = False      # set False to skip gold pixel check (e.g., to see lower rarity)
+USE_STAT_CACHE = True        # use cache lookups
+CREATE_STAT_CACHE = False     # if True, save matched stat images to data/matched
+USE_QUALITY_GUARD = False     # set False to skip gold pixel check (e.g., to see lower rarity)
+REQUIRE_THREE_STATS = True    # require all 3 stats before lookup
 
 
 # ---------- Persistence helpers ----------
@@ -82,6 +84,8 @@ def run_lookup_loop(index: WeaponIndex, hotkey: str = HOTKEY) -> None:
         log_debug=LOG_DEBUG,
         guard_mode=GUARD_MODE,
         use_stat_cache=USE_STAT_CACHE,
+        create_stat_cache=CREATE_STAT_CACHE,
+        require_three_stats=REQUIRE_THREE_STATS,
     )
     driver.use_quality_guard = USE_QUALITY_GUARD
     active = False
