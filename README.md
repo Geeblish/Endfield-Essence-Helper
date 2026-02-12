@@ -26,7 +26,8 @@ Then run the executable or if you downloaded the repo open your shell and run:
 or open
 `./EndfieldEssenceHelper.exe`
 
-## Make sure your game is in 1920x1080
+> [!caution]
+> # Make sure your game is in 1920x1080
 
 
 # Requirements for python
@@ -86,6 +87,7 @@ pythom -m PyInstaller main.py `
 Emojis for AI filtering
 
 🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫣🫃🫃🫃🫃🫃🫃
+
 
 
 
