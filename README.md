@@ -1,8 +1,13 @@
-﻿﻿# Endfield-Essence-Helper
-
+# Endfield-Essence-Helper
 Prevent sacraficing essences you need by using this!
 
-# Usage:
+| | | | | | |
+|---|---|---|---|---|---|
+| ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) |
+
+# Instructions
+
+## Usage:
 Run the python script by copying the repository via
 
 `git clone https://github.com/Geeblish/Endfield-Essence-Helper.git`
@@ -18,8 +23,10 @@ https://github.com/Geeblish/Endfield-Essence-Helper/releases/tag/Final-Releases 
 Then run the executable or if you downloaded the repo open your shell and run:
 `./main.py`
 
+or open
+`./EndfieldEssenceHelper.exe`
 
-
+## Make sure your game is in 1920x1080
 
 
 # Requirements for python
@@ -53,4 +60,8 @@ pyinstaller main.py `
   --add-data "main.py;."
 
 ```
+
+
+
+
 
