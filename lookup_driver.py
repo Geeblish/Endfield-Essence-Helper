@@ -204,7 +204,6 @@ class LookupDriver:
         self.create_stat_cache = create_stat_cache
         self.require_three_stats = require_three_stats
         self.ocr = RapidOCR()
-        self.sct = mss.mss()  # reuse capture session to cut per-loop overhead
         self._last_logs: List[str] = []
         self._debug_counter = 0
         self._templates: Dict[str, Optional[np.ndarray]] = {}
@@ -238,15 +237,15 @@ class LookupDriver:
             self._stat_templates[stat_name] = gray
             self._stat_sigs[stat_name] = _signature(gray)
 
-    def _capture_region(self, layout: Dict, idx: int, win: Optional[Dict[str, int]] = None) -> np.ndarray:
+    def _capture_region(self, sct: mss.mss, layout: Dict, idx: int, win: Optional[Dict[str, int]] = None) -> np.ndarray:
         win = win or _get_game_rect(self.window_title)
         rect = _norm_to_abs(layout["regions"][idx], win)
-        return _grab_region(self.sct, rect)
+        return _grab_region(sct, rect)
 
-    def _capture_all(self, layout: Dict, win: Optional[Dict[str, int]] = None) -> List[np.ndarray]:
+    def _capture_all(self, sct: mss.mss, layout: Dict, win: Optional[Dict[str, int]] = None) -> List[np.ndarray]:
         win = win or _get_game_rect(self.window_title)
         abs_regions = [_norm_to_abs(r, win) for r in layout["regions"]]
-        return [_grab_region(self.sct, rect) for rect in abs_regions]
+        return [_grab_region(sct, rect) for rect in abs_regions]
 
     def _ocr_text(self, img: np.ndarray) -> str:
         processed = _preprocess_for_ocr(img)
@@ -355,34 +354,35 @@ class LookupDriver:
         chosen_layout = None
         menu_img_cache: Optional[np.ndarray] = None
 
-        # Try layouts in order; release unneeded images ASAP
-        for layout in LAYOUTS:
-            menu_img = self._capture_region(layout, layout["menu_idx"], win)
-            menu_ok = self._check_menu_guard(layout, menu_img)
-            if menu_ok:
-                chosen_layout = layout
-                menu_img_cache = menu_img
-                if self.log_debug:
-                    logs.append(f"[HIT] Menu Guard detected: {layout['name']} menu")
-                break
-            else:
-                if self.save_images or self.log_debug:
-                    DEBUG_DIR.mkdir(parents=True, exist_ok=True)
-                    fname = DEBUG_DIR / f"guard_{layout['name']}_{self._debug_counter}.png"
-                    cv2.imwrite(str(fname), menu_img)
-                del menu_img
-                if self.log_debug:
-                    logs.append(f"[MISS] Guard OCR '{getattr(self,'_last_guard_text','')}' for layout {layout['name']}")
-                self._debug_counter += 1
+        with mss.mss() as sct:
+            # Try layouts in order; release unneeded images ASAP
+            for layout in LAYOUTS:
+                menu_img = self._capture_region(sct, layout, layout["menu_idx"], win)
+                menu_ok = self._check_menu_guard(layout, menu_img)
+                if menu_ok:
+                    chosen_layout = layout
+                    menu_img_cache = menu_img
+                    if self.log_debug:
+                        logs.append(f"[HIT] Menu Guard detected: {layout['name']} menu")
+                    break
+                else:
+                    if self.save_images or self.log_debug:
+                        DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+                        fname = DEBUG_DIR / f"guard_{layout['name']}_{self._debug_counter}.png"
+                        cv2.imwrite(str(fname), menu_img)
+                    del menu_img
+                    if self.log_debug:
+                        logs.append(f"[MISS] Guard OCR '{getattr(self,'_last_guard_text','')}' for layout {layout['name']}")
+                    self._debug_counter += 1
 
-        if chosen_layout is None:
-            self._last_logs = logs
-            return {"quality_ok": False, "menu_ok": False, "logs": logs, "menu_text": "", "raw_texts": ["", "", ""], "stats": [None, None, None]}
+            if chosen_layout is None:
+                self._last_logs = logs
+                return {"quality_ok": False, "menu_ok": False, "logs": logs, "menu_text": "", "raw_texts": ["", "", ""], "stats": [None, None, None]}
 
-        # Capture all regions in one shot to keep stat lines in sync
-        t_cap = time.perf_counter()
-        imgs = self._capture_all(chosen_layout, win)
-        t_after_cap = time.perf_counter()
+            # Capture all regions in one shot to keep stat lines in sync
+            t_cap = time.perf_counter()
+            imgs = self._capture_all(sct, chosen_layout, win)
+            t_after_cap = time.perf_counter()
 
         if self.save_images:
             DEBUG_DIR.mkdir(parents=True, exist_ok=True)
