@@ -3,3 +3,4 @@ opencv-python
 rapidocr-onnxruntime 
 pillow 
 keyboard
+pywin32
