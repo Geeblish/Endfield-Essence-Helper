@@ -3,7 +3,7 @@ Prevent sacraficing essences you need by using this!
 
 | | | | | | | | |
 |---|---|---|---|---|---|---|---|
-| ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) |
+| ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) |
 
 
 # Usage:
@@ -57,5 +57,6 @@ pyinstaller main.py `
   --add-data "main.py;."
 
 ```
+
 
 
