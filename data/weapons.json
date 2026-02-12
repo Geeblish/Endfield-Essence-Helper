@@ -1,0 +1,481 @@
+{
+  "weapons": [
+    {
+      "name": "Tarr 11",
+      "stats": [
+        "ATTACK_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Jiminy 12",
+      "stats": [
+        "ATTACK_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Peco 5",
+      "stats": [
+        "ATTACK_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Howling Guard",
+      "stats": [
+        "SUPPRESSION",
+        "INTELLECT_BOOST",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Long Road",
+      "stats": [
+        "PURSUIT",
+        "ORIGINIUM_ARTS_BOOST",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Aggeloslayer",
+      "stats": [
+        "SUPPRESSION",
+        "ORIGINIUM_ARTS_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Pathfinder's Beacon",
+      "stats": [
+        "AGILITY_BOOST",
+        "INSPIRING",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Industry 0.1",
+      "stats": [
+        "SUPPRESSION",
+        "ATTACK_BOOST",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Contingent Measure",
+      "stats": [
+        "AGILITY_BOOST",
+        "PHYSICAL_DMG_BOOST",
+        "SUPPRESSION"
+      ]
+    },
+    {
+      "name": "Quencher",
+      "stats": [
+        "HP_BOOST",
+        "CRUSHER",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Wave Tide",
+      "stats": [
+        "PURSUIT",
+        "INTELLECT_BOOST",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Hypernova Auto",
+      "stats": [
+        "INTELLECT_BOOST",
+        "ORIGINIUM_ARTS_BOOST",
+        "INSPIRING"
+      ]
+    },
+    {
+      "name": "Fluorescent Roc",
+      "stats": [
+        "SUPPRESSION",
+        "ATTACK_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Aspirant",
+      "stats": [
+        "AGILITY_BOOST",
+        "PHYSICAL_DMG_BOOST",
+        "TWILIGHT"
+      ]
+    },
+    {
+      "name": "Wild Wanderer",
+      "stats": [
+        "ELECTRIC_DMG_BOOST",
+        "INTELLECT_BOOST",
+        "INFLICTION"
+      ]
+    },
+    {
+      "name": "Stanza of Memorials",
+      "stats": [
+        "TWILIGHT",
+        "INTELLECT_BOOST",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Rational Farewell",
+      "stats": [
+        "HEAT_DMG_BOOST",
+        "PURSUIT",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Ancient Canal",
+      "stats": [
+        "ARTS_DMG_BOOST",
+        "BRUTALITY",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Monaihe",
+      "stats": [
+        "INSPIRING",
+        "ULTIMATE_GAIN_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Chimeric Justice",
+      "stats": [
+        "BRUTALITY",
+        "ULTIMATE_GAIN_BOOST",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "OBJ Heavy Burden",
+      "stats": [
+        "EFFICACY",
+        "STRENGTH_BOOST",
+        "HP_BOOST"
+      ]
+    },
+    {
+      "name": "Opus: The Living",
+      "stats": [
+        "AGILITY_BOOST",
+        "ORIGINIUM_ARTS_BOOST",
+        "INFLICTION"
+      ]
+    },
+    {
+      "name": "OBJ Razorhorn",
+      "stats": [
+        "PHYSICAL_DMG_BOOST",
+        "INFLICTION",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "OBJ Velocitous",
+      "stats": [
+        "AGILITY_BOOST",
+        "ULTIMATE_GAIN_BOOST",
+        "DETONATE"
+      ]
+    },
+    {
+      "name": "Sundering Steel",
+      "stats": [
+        "AGILITY_BOOST",
+        "COMBATIVE",
+        "PHYSICAL_DMG_BOOST"
+      ]
+    },
+    {
+      "name": "Seeker of Dark Lung",
+      "stats": [
+        "ULTIMATE_GAIN_BOOST",
+        "DETONATE",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Cohesive Traction",
+      "stats": [
+        "SUPPRESSION",
+        "ELECTRIC_DMG_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Fortmaker",
+      "stats": [
+        "INTELLECT_BOOST",
+        "ULTIMATE_GAIN_BOOST",
+        "INSPIRING"
+      ]
+    },
+    {
+      "name": "Finishing Call",
+      "stats": [
+        "MEDICANT",
+        "STRENGTH_BOOST",
+        "HP_BOOST"
+      ]
+    },
+    {
+      "name": "Finchaser 3.0",
+      "stats": [
+        "SUPPRESSION",
+        "CRYO_DMG_BOOST",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "OBJ Arts Identifier",
+      "stats": [
+        "PURSUIT",
+        "INTELLECT_BOOST",
+        "ARTS_DMG_BOOST"
+      ]
+    },
+    {
+      "name": "Twelve Questions",
+      "stats": [
+        "AGILITY_BOOST",
+        "INFLICTION",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "OBJ Edge of Lightness",
+      "stats": [
+        "AGILITY_BOOST",
+        "FLOW",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Freedom to Proselytize",
+      "stats": [
+        "TREATMENT_EFFICIENCY_BOOST",
+        "MEDICANT",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Sundered Prince",
+      "stats": [
+        "CRUSHER",
+        "STRENGTH_BOOST",
+        "CRITICAL_RATE_BOOST"
+      ]
+    },
+    {
+      "name": "White Night Nova",
+      "stats": [
+        "ARTS_DMG_BOOST",
+        "INFLICTION",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Grand Vision",
+      "stats": [
+        "AGILITY_BOOST",
+        "INFLICTION",
+        "ATTACK_BOOST"
+      ]
+    },
+    {
+      "name": "Rapid Ascent",
+      "stats": [
+        "TWILIGHT",
+        "MAIN_ATTRIBUTE_BOOST",
+        "CRITICAL_RATE_BOOST"
+      ]
+    },
+    {
+      "name": "Never Rest",
+      "stats": [
+        "FLOW",
+        "ATTACK_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Eminent Repute",
+      "stats": [
+        "BRUTALITY",
+        "PHYSICAL_DMG_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Opus: Etch Figure",
+      "stats": [
+        "NATURE_DMG_BOOST",
+        "SUPPRESSION",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Navigator",
+      "stats": [
+        "CRYO_DMG_BOOST",
+        "INTELLECT_BOOST",
+        "INFLICTION"
+      ]
+    },
+    {
+      "name": "Chivalric Virtues",
+      "stats": [
+        "HP_BOOST",
+        "MEDICANT",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Khravengger",
+      "stats": [
+        "ATTACK_BOOST",
+        "DETONATE",
+        "STRENGTH_BOOST"
+      ]
+    },
+    {
+      "name": "Exemplar",
+      "stats": [
+        "SUPPRESSION",
+        "ATTACK_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Oblivion",
+      "stats": [
+        "INTELLECT_BOOST",
+        "ORIGINIUM_ARTS_BOOST",
+        "TWILIGHT"
+      ]
+    },
+    {
+      "name": "Valiant",
+      "stats": [
+        "AGILITY_BOOST",
+        "FRACTURE",
+        "PHYSICAL_DMG_BOOST"
+      ]
+    },
+    {
+      "name": "Artzy Tyrannical",
+      "stats": [
+        "FRACTURE",
+        "INTELLECT_BOOST",
+        "CRITICAL_RATE_BOOST"
+      ]
+    },
+    {
+      "name": "Wedge",
+      "stats": [
+        "INFLICTION",
+        "MAIN_ATTRIBUTE_BOOST",
+        "CRITICAL_RATE_BOOST"
+      ]
+    },
+    {
+      "name": "Detonation Unit",
+      "stats": [
+        "ARTS_DMG_BOOST",
+        "DETONATE",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Delivery Guaranteed",
+      "stats": [
+        "PURSUIT",
+        "ULTIMATE_GAIN_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Clannibal",
+      "stats": [
+        "INFLICTION",
+        "ORIGINIUM_ARTS_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "JET",
+      "stats": [
+        "SUPPRESSION",
+        "ATTACK_BOOST",
+        "MAIN_ATTRIBUTE_BOOST"
+      ]
+    },
+    {
+      "name": "Umbral Torch",
+      "stats": [
+        "HEAT_DMG_BOOST",
+        "INTELLECT_BOOST",
+        "INFLICTION"
+      ]
+    },
+    {
+      "name": "Former Finery",
+      "stats": [
+        "HP_BOOST",
+        "EFFICACY",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Mountain Bearer",
+      "stats": [
+        "AGILITY_BOOST",
+        "PHYSICAL_DMG_BOOST",
+        "EFFICACY"
+      ]
+    },
+    {
+      "name": "Dreams of the Starry Beach",
+      "stats": [
+        "TREATMENT_EFFICIENCY_BOOST",
+        "INTELLECT_BOOST",
+        "INFLICTION"
+      ]
+    },
+    {
+      "name": "Thermite Cutter",
+      "stats": [
+        "FLOW",
+        "ATTACK_BOOST",
+        "WILL_BOOST"
+      ]
+    },
+    {
+      "name": "Thunderberge",
+      "stats": [
+        "MEDICANT",
+        "STRENGTH_BOOST",
+        "HP_BOOST"
+      ]
+    },
+    {
+      "name": "Forgeborn Scathe",
+      "stats": [
+        "TWILIGHT",
+        "INTELLECT_BOOST",
+        "ATTACK_BOOST"
+      ]
+    }
+  ]
+}
