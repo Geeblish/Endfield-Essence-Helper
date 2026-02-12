@@ -1,0 +1,1 @@
+pip install mss opencv-python rapidocr-onnxruntime pillow keyboard
