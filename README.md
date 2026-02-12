@@ -32,7 +32,7 @@ or open
 # Requirements for python
 ### Make sure to run this if you are planning to run via `./main.py`
 `
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 `
 ---
 # Compiling
@@ -60,6 +60,7 @@ pyinstaller main.py `
   --add-data "main.py;."
 
 ```
+
 
 
 
