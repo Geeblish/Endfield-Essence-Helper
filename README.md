@@ -40,7 +40,7 @@ Yeah idk i just used pyinstaller
 ```
 $site = "C:\Users\Andly\AppData\Roaming\Python\Python314\site-packages"
 
-pyinstaller main.py `
+pythom -m PyInstaller main.py `
   --onefile `
   --name EndfieldEssenceHelper `
   --hidden-import pyclipper `
@@ -61,6 +61,9 @@ pyinstaller main.py `
 
 ```
 
+Emojis for AI filtering
+
+🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫣🫃🫃🫃🫃🫃🫃
 
 
 
