@@ -36,6 +36,7 @@ GUARD_HAMMING_THRESH = 40  # max differing bits (of 256) to accept
 STAT_HAMMING_THRESH = 40
 STAT_HAMMING_STRICT = 12
 STAT_HAMMING_MARGIN = 8  # best must beat runner-up by this to accept loose match
+STAT_CONTRAST_MIN = 25  # skip OCR when text is still fading (low contrast)
 
 class GuardMode(Enum):
     NONE = "none"
@@ -137,14 +138,24 @@ def _hamming(sig1: np.ndarray, sig2: np.ndarray) -> int:
     return int(np.unpackbits(np.bitwise_xor(sig1, sig2)).sum())
 
 
+def _low_contrast(img: np.ndarray, threshold: float = STAT_CONTRAST_MIN) -> bool:
+    # img is BGR
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return float(gray.std()) < threshold
+
+
 def _choose_stat(
-    text: str, mapping: Dict[str, Sequence[str] | str], threshold: float = 0.72
+    text: str,
+    mapping: Dict[str, Sequence[str] | str],
+    threshold: float = 0.90,
+    margin: float = 0.07,
 ) -> Optional[Stat]:
     if not text:
         return None
 
     norm_text = _normalize(text)
     best: Optional[Tuple[Stat, float]] = None
+    second: Optional[Tuple[Stat, float]] = None
 
     for key, values in mapping.items():
         opts = values if isinstance(values, list) else [values]
@@ -155,10 +166,14 @@ def _choose_stat(
 
             score = SequenceMatcher(None, norm_text, norm_opt).ratio()
             if best is None or score > best[1]:
+                second = best
                 best = (Stat[key], score)
+            elif second is None or score > second[1]:
+                second = (Stat[key], score)
 
     if best and best[1] >= threshold:
-        return best[0]
+        if second is None or (best[1] - second[1] >= margin):
+            return best[0]
     return None
 
 
@@ -172,12 +187,16 @@ class LookupDriver:
         log_debug: bool = False,
         guard_mode: GuardMode = GuardMode.IMAGE,
         use_stat_cache: bool = False,
+        create_stat_cache: bool = False,
+        require_three_stats: bool = True,
     ):
         self.window_title = window_title
         self.save_images = save_images
         self.log_debug = log_debug
         self.guard_mode = guard_mode
         self.use_stat_cache = use_stat_cache
+        self.create_stat_cache = create_stat_cache
+        self.require_three_stats = require_three_stats
         self.ocr = RapidOCR()
         self.sct = mss.mss()  # reuse capture session to cut per-loop overhead
         self._last_logs: List[str] = []
@@ -381,9 +400,19 @@ class LookupDriver:
 
         raw_texts: List[str] = ["", "", ""]
         stats: List[Optional[Stat]] = [None, None, None]
+        from_cache: List[bool] = [False, False, False]
+        low_contrast_flags: List[bool] = [False, False, False]
 
         for idx_out, region_idx in enumerate(chosen_layout["stat_indices"]):
             region_img = imgs[region_idx]
+
+            if _low_contrast(region_img):
+                if self.log_debug:
+                    logs.append(f"[SKIP] Stat region {idx_out+1} low contrast (fading)")
+                stats[idx_out] = None
+                raw_texts[idx_out] = ""
+                low_contrast_flags[idx_out] = True
+                continue
 
             # Fast cache lookup
             if self.use_stat_cache:
@@ -391,22 +420,31 @@ class LookupDriver:
                 if cached_stat:
                     stats[idx_out] = cached_stat
                     raw_texts[idx_out] = cached_stat.name
+                    from_cache[idx_out] = True
                     continue
 
             raw = self._ocr_text(region_img)
             raw_texts[idx_out] = raw
             stats[idx_out] = _choose_stat(raw, STAT_MAPPING := STAT1_MAPPING)  # mappings all unified
 
-            if stats[idx_out] and self.use_stat_cache:
+            if stats[idx_out] and self.create_stat_cache:
                 self._persist_stat_template(stats[idx_out], region_img)
 
         # If any duplicates or None, fall back to OCR-only for those slots to avoid stale cache
         seen = set()
         for idx, stat in enumerate(stats):
             if stat is None or stat in seen:
+                if _low_contrast(imgs[chosen_layout["stat_indices"][idx]]):
+                    if self.log_debug:
+                        logs.append(f"[SKIP] Stat region {idx+1} low contrast (refetch)")
+                    stats[idx] = None
+                    raw_texts[idx] = ""
+                    continue
                 raw = self._ocr_text(imgs[chosen_layout["stat_indices"][idx]])
                 raw_texts[idx] = raw
                 stats[idx] = _choose_stat(raw, STAT_MAPPING := STAT1_MAPPING)
+                from_cache[idx] = False
+                low_contrast_flags[idx] = False
             if stats[idx]:
                 seen.add(stats[idx])
 
@@ -444,10 +482,15 @@ class LookupDriver:
         stats: List[Optional[Stat]] = result["stats"]  # type: ignore[assignment]
         present = [s for s in stats if s is not None]
 
-        if len(present) == 2:
-            return present[0], present[1]
+        if self.require_three_stats:
+            if len(present) == 3:
+                return present[0], present[1], present[2]
+            return None
+
         if len(present) == 3:
             return present[0], present[1], present[2]
+        if len(present) == 2:
+            return present[0], present[1]
         return None
 
 
