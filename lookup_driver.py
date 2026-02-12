@@ -6,6 +6,7 @@ import numpy as np
 import win32gui  # type: ignore
 from difflib import SequenceMatcher
 from pathlib import Path
+import sys
 import time
 from typing import Dict, List, Optional, Sequence, Tuple, Union
 from enum import Enum
@@ -22,12 +23,17 @@ WINDOW_TITLE = "Endfield"
 
 QUALITY_COLOR = (255, 186, 3)  # #ffba03
 COLOR_TOLERANCE = 10
+def resource_path(rel: str) -> Path:
+    base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+    return base / rel
+
+
 DEBUG_DIR = Path("data/tmp/ocr_debug")
 MATCHED_DIR = Path("data/matched")
 
 MENU_TEMPLATES = {
-    "inventory": Path("data/menu_guard_inventory.png"),
-    "etch": Path("data/menu_guard_etch.png"),
+    "inventory": resource_path("data/Menu_Guard_Inventory.png"),
+    "etch": resource_path("data/Menu_Guard_Etch.png"),
 }
 
 # Lightweight signature params for guard hashing

@@ -5,11 +5,17 @@ import json
 import sys
 import time
 from pathlib import Path
+import sys
 from typing import Iterable, List, Tuple, Union
 
 from Essence_Helper import Stat, WeaponIndex
 from audio_helper import chime
 from lookup_driver import LookupDriver, GuardMode
+
+def resource_path(rel: str) -> Path:
+    base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+    return base / rel
+
 
 WEAPON_JSON = Path("data") / "weapons.json"
 HOTKEY = "f10"  # user-changeable toggle
