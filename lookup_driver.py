@@ -27,21 +27,27 @@ def resource_path(rel: str) -> Path:
     base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
     return base / rel
 
+def data_path(rel: str) -> Path:
+    external = Path.cwd() / rel
+    if external.exists():
+        return external
+    return resource_path(rel)
+
 
 DEBUG_DIR = Path("data/tmp/ocr_debug")
 MATCHED_DIR = Path("data/matched")
 
 MENU_TEMPLATES = {
-    "inventory": resource_path("data/Menu_Guard_Inventory.png"),
-    "etch": resource_path("data/Menu_Guard_Etch.png"),
+    "inventory": data_path("data/Menu_Guard_Inventory.png"),
+    "etch": data_path("data/Menu_Guard_Etch.png"),
 }
 
 # Lightweight signature params for guard hashing
 GUARD_SIG_SIZE = 16  # resize to 16x16
 GUARD_HAMMING_THRESH = 40  # max differing bits (of 256) to accept
-STAT_HAMMING_THRESH = 40
-STAT_HAMMING_STRICT = 12
-STAT_HAMMING_MARGIN = 8  # best must beat runner-up by this to accept loose match
+STAT_HAMMING_THRESH = 24
+STAT_HAMMING_STRICT = 6
+STAT_HAMMING_MARGIN = 12  # best must beat runner-up by this to accept loose match
 STAT_CONTRAST_MIN = 25  # skip OCR when text is still fading (low contrast)
 
 class GuardMode(Enum):
@@ -439,6 +445,8 @@ class LookupDriver:
                 if cached_stat:
                     stats[idx_out] = cached_stat
                     raw_texts[idx_out] = cached_stat.name
+                    if self.log_debug:
+                        logs.append(f"[CACHE] Stat{idx_out+1} -> {cached_stat.name}")
                     from_cache[idx_out] = True
                     continue
 

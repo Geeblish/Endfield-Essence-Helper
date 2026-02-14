@@ -17,7 +17,15 @@ def resource_path(rel: str) -> Path:
     return base / rel
 
 
-WEAPON_JSON = Path("data") / "weapons.json"
+def data_path(rel: str) -> Path:
+    """Prefer external data next to the exe; fallback to bundled resource."""
+    external = Path.cwd() / rel
+    if external.exists():
+        return external
+    return resource_path(rel)
+
+
+WEAPON_JSON = data_path("data/weapons.json")
 HOTKEY = "f10"  # user-changeable toggle
 LOG_DEBUG = False  # verbose logging toggle
 SAVE_IMAGES = False  # set True when you need dumps in data/tmp/ocr_debug

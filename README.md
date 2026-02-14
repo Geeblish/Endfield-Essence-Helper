@@ -38,9 +38,9 @@ python -m pip install -r requirements.txt
 # Compiling
 Yeah idk i just used pyinstaller
 ```
-$site = "C:\Users\Andly\AppData\Roaming\Python\Python314\site-packages"
+$site = "$env:USERPROFILE\AppData\Roaming\Python\Python314\site-packages"
 
-pyinstaller main.py `
+python -m PyInstaller main.py `
   --onefile `
   --name EndfieldEssenceHelper `
   --hidden-import pyclipper `
