@@ -1,9 +1,8 @@
 # Endfield-Essence-Helper
 Prevent sacraficing essences you need by using this!
 
-| | | | | | |
-|---|---|---|---|---|---|
-| ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) | ![a](https://i.redd.it/q6zpzph4laig1.gif) | ![image](https://github.com/user-attachments/assets/5776565d-2a9f-4eb5-8aa6-ade3bcc2e514) |
+## Guide:
+[<img src="https://cdn.discordapp.com/attachments/1270046576533966868/1472476415017615455/SFLU2M9.jpg?ex=6992b606&is=69916486&hm=fb317424e2b75b6ed456537b9aa1b1891878097ff5f2f52efadd1b64982a7d05&" width="600">](https://youtu.be/LSkMRxs5QAY)
 
 # Instructions
 
@@ -87,6 +86,7 @@ pythom -m PyInstaller main.py `
 Emojis for AI filtering
 
 🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫃🫣🫃🫃🫃🫃🫃🫃
+
 
 
 
