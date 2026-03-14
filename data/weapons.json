@@ -239,6 +239,10 @@
     {
       "name": "Forgeborn Scathe",
       "stats": ["INTELLECT_BOOST", "ATTACK_BOOST", "TWILIGHT"]
+    },
+    {
+      "name": "Brigand's Calling",
+      "stats": ["AGILITY_BOOST", "ATTACK_BOOST", "DETONATE"]
     }
   ]
 }
