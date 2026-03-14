@@ -1,8 +1,8 @@
 # Endfield-Essence-Helper
-Prevent sacraficing essences you need by using this!
+Prevent sacrificing essences you need by using this!
 
 ## Guide:
-[<img src="https://cdn.discordapp.com/attachments/1270046576533966868/1472476415017615455/SFLU2M9.jpg?ex=6992b606&is=69916486&hm=fb317424e2b75b6ed456537b9aa1b1891878097ff5f2f52efadd1b64982a7d05&" width="600">](https://youtu.be/LSkMRxs5QAY)
+[<img src="https://cdn.discordapp.com/attachments/1207802935325753344/1482228647623655614/NZrCqzg.png?ex=69b63080&is=69b4df00&hm=ca056e69fbc4961d4757e176579c15098b511ca70f1b6d007b3f818fcfb19376&" width="600">](https://youtu.be/LSkMRxs5QAY)
 
 # Instructions
 
@@ -62,7 +62,7 @@ Yeah idk i just used pyinstaller
 ```
 $site = "$env:USERPROFILE\AppData\Roaming\Python\Python314\site-packages"
 
-pythom -m PyInstaller main.py `
+python -m PyInstaller main.py `
   --onefile `
   --name EndfieldEssenceHelper `
   --hidden-import pyclipper `
